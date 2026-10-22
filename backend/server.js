@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'success', message: 'Teamflow API is running smoothly! 🚀' });
+  res.json({ status: 'success', message: 'Teamflow API is running very smoothly!' });
 });
 
 app.listen(PORT, () => {
