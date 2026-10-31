@@ -1,0 +1,22 @@
+function LoadingSpinner({ message = 'Loading...', size = 'md' }) {
+  const sizes = {
+    sm: 'h-4 w-4 border-2',
+    md: 'h-8 w-8 border-4',
+    lg: 'h-12 w-12 border-4',
+  }
+
+  return (
+    <div
+      className="flex flex-col items-center justify-center gap-3 p-6"
+      role="status"
+      aria-live="polite"
+    >
+      <div
+        className={`${sizes[size] || sizes.md} animate-spin rounded-full border-indigo-200 border-t-indigo-600`}
+      />
+      <p className="text-sm text-slate-500">{message}</p>
+    </div>
+  )
+}
+
+export default LoadingSpinner
