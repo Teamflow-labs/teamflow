@@ -1,17 +1,9 @@
-const express = require('express');
-const cors = require('cors');
-require('dotenv').config();
+   require("dotenv").config();
 
-const app = express();
+const app = require("./app");
+
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
-app.use(express.json());
-
-app.get('/api/health', (req, res) => {
-  res.json({ status: 'success', message: 'Teamflow API is running very smoothly!' });
-});
-
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Teamflow API is running on http://localhost:${PORT}`);
 });
