@@ -1,17 +1,22 @@
-const express = require('express');
-const cors = require('cors');
-require('dotenv').config();
+const path = require("path");
 
-const app = express();
-const PORT = process.env.PORT || 5000;
-
-app.use(cors());
-app.use(express.json());
-
-app.get('/api/health', (req, res) => {
-  res.json({ status: 'success', message: 'Teamflow API is running very smoothly!' });
+// Load environment variables from backend/.env
+require("dotenv").config({
+  path: path.join(__dirname, ".env"),
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+const app = require("./app");
+const config = require("./config/env");
+
+const server = app.listen(config.port, () => {
+  console.log(
+    `Teamflow API running on http://localhost:${config.port}`
+  );
+  console.log(`Environment: ${config.nodeEnv}`);
+});
+
+// Handle unexpected server errors.
+server.on("error", (error) => {
+  console.error("Server startup error:", error.message);
+  process.exit(1);
 });
